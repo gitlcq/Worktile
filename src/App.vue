@@ -128,7 +128,7 @@
       }
       .nav{
       	position: absolute;
-		    top: 0%;
+		    top: 0;
 		    left: 70px;
       }
 
