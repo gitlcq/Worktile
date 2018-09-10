@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>我是网盘</h1>
+        <div class="import">
+
+        </div>
     </div>
 </template>
 
@@ -11,5 +13,13 @@
 </script>
 
 <style scoped>
-
+div{
+    width:100%;
+    height:100%;
+}
+.import{
+    height:100%;
+    width:240px;
+    background: red;
+}
 </style>
