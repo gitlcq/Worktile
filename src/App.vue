@@ -128,8 +128,8 @@
       }
       .nav{
       	position: absolute;
-		    top: 50%;
-		    left: 50%;
+		    top: 0;
+		    left: 70px;
       }
 
 </style>
