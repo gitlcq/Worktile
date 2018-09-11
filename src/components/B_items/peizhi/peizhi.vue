@@ -85,11 +85,6 @@ export default {
         font-size:14px;
         text-align: center;
     }
-    .ew {
-        width: 100%;
-        height: 100%;
-        background-color:rgb(231,249,246);
-    }
     .router-link-active{
     color:#22d7bb;
     }

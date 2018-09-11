@@ -66,7 +66,6 @@ export default {
        width:93%;
        height: 100%;
        position: absolute;
-       border:15px solid #ccc;
+       border:15px solid rgb(238, 238, 238);
     }
-
 </style>

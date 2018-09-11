@@ -3,6 +3,11 @@ import App from './App.vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
 Vue.use(Vuex);
 
 Vue.use(VueRouter);
@@ -43,12 +48,12 @@ const r = [
                 name:"配置中心",
                 children:[
                     {
-                        path:'/B_items/peizhi/one',
+                        path:'/B_items/peizhi/one/',
                         component:require('./components/B_items/peizhi/one/one.vue').default,
                         name:'项日',
                         children:[
                             {
-                                path:'/B_items/peizhi/one/xmmb',
+                                path:'/B_items/peizhi/one/xmmb/',
                                 component:require('./components/B_items/peizhi/one/xmmb/xmmb.vue').default,
                                 name:'项日模板'
                             },
@@ -61,6 +66,10 @@ const r = [
                                 path:'/B_items/peizhi/one/bbgl',
                                 component:require('./components/B_items/peizhi/one/bbgl/bbgl.vue').default,
                                 name:'报表管理'
+                            },
+                            {
+                                path:"*",
+                                redirect:'/B_items/peizhi/one/xmmb'
                             }
                         ]
                     },
@@ -158,7 +167,10 @@ const r = [
                             }
                         ]
                     },
-                    
+                    {
+                        path:'*',
+                        redirect:'/B_items/peizhi/one/'  
+                    }
                 ]
             },
             {
