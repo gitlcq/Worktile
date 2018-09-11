@@ -35,7 +35,7 @@ export default {
     return{
       qiye:[
             {
-                name:"111",
+                name:"person",
                 size:"-",
                 person:"m",
                 time:"11月10日10:21"

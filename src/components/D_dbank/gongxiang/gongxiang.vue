@@ -2,10 +2,10 @@
     <div>
         <div class="header">
           <a href="#"><i class="icon">🐻</i>与我共享</a>
-          <div class="head-right">
+          <!-- <div class="head-right">
              <div class="btu">+新建</div>
              <div class="btn">上传文件</div>
-          </div>
+          </div> -->
         </div>
         <div class="part">
            <div class="part-bg">
