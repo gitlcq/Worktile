@@ -4,7 +4,7 @@
            <p> <span>项目</span> <i>😘</i></p>
             <div class="list">
                 <div class="inp">
-                        <i>🐷</i>
+                        <i class="wtf wtf-project-add-o">🐷</i>
                       <input type="text" placeholder="搜索任务">
                 </div>
 
@@ -92,7 +92,7 @@ div{
         position: absolute; 
         left: 20px;
         top: 60px;
-        border:1px solid #ccc;
+        /* border:1px solid #ccc; */
         border-radius:17px;
         background-color:rgb(243,243,243);
     }

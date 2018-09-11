@@ -2,6 +2,26 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+// 引入字体
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faUserPlus,
+  faComment,
+  faSearch,
+  faUserFriends,
+  faSitemap,
+  faCaretRight,
+  faBuilding
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,faCaretRight,faBuilding);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
+
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(Vuex);
 
@@ -43,12 +63,12 @@ const r = [
                 name:"配置中心",
                 children:[
                     {
-                        path:'/B_items/peizhi/one',
+                        path:'/B_items/peizhi/one/',
                         component:require('./components/B_items/peizhi/one/one.vue').default,
                         name:'项日',
                         children:[
                             {
-                                path:'/B_items/peizhi/one/xmmb',
+                                path:'/B_items/peizhi/one/xmmb/',
                                 component:require('./components/B_items/peizhi/one/xmmb/xmmb.vue').default,
                                 name:'项日模板'
                             },
@@ -61,6 +81,10 @@ const r = [
                                 path:'/B_items/peizhi/one/bbgl',
                                 component:require('./components/B_items/peizhi/one/bbgl/bbgl.vue').default,
                                 name:'报表管理'
+                            },
+                            {
+                                path:"*",
+                                redirect:'/B_items/peizhi/one/xmmb'
                             }
                         ]
                     },
@@ -158,7 +182,10 @@ const r = [
                             }
                         ]
                     },
-                    
+                    {
+                        path:'*',
+                        redirect:'/B_items/peizhi/one/'  
+                    }
                 ]
             },
             {
@@ -230,7 +257,40 @@ const r = [
     {
         path:'/addressBook',
         component:AddressBook.default,
-        name:'通讯录'
+        name:'通讯录',
+        children:[
+            //配置子路由
+            {
+                path:'/addressBook/yizu',
+                component:require('./components/E_address/yizu/yizu.vue').default,
+                name:'一组'
+            },
+            {
+                path:'/addressBook/erzu',
+                component:require('./components/E_address/erzu/erzu.vue').default,
+                name:'二组'
+            },
+            {
+                path:'/addressBook/sanzu',
+                component:require('./components/E_address/sanzu/sanzu.vue').default,
+                name:'三组'
+            },
+            {
+                path:'/addressBook/sizu',
+                component:require('./components/E_address/sizu/sizu.vue').default,
+                name:'四组'
+            },
+            {
+                path:'/addressBook/wuzu',
+                component:require('./components/E_address/wuzu/wuzu.vue').default,
+                name:'五组'
+            },
+            {
+                // 如果用户随便输入地址，转到一组
+                path:'*',
+                redirect:'/E_address/yizu/'
+              }
+        ]
     },
     {
       //如果用户随便输入地址,转到首页   给一个重定位

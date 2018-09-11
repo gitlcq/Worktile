@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-          <a href="#"><i class="icon">🐻</i>企业网盘</a>
+          <a href="#"><font-awesome-icon icon="user-plus" class="up_hov"/>企业网盘</a>
           <div class="head-right">
              <div class="btu">+新建</div>
              <div class="btnn">上传文件</div>

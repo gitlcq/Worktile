@@ -18,7 +18,7 @@ export default {
             san:[
                 {
                     title:'项日模板',
-                    url:'/B_items/peizhi/one/xmmb',
+                    url:'/B_items/peizhi/one/xmmb/',
                 },
                 {
                     title:'组件管理',
@@ -50,6 +50,12 @@ export default {
     }
     .san .router-link-active{
     color:#22d7bb;
+    }
+      .er{
+       width:93%;
+       height: 100%;
+       position: absolute;
+       border:15px solid rgb(238, 238, 238);
     }
 
 </style>
