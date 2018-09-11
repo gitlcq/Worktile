@@ -29,7 +29,7 @@
                 tabNav:[
                     {
                         title:'消息',
-                        url:'./news'
+                        url:'./news',
                     },
                     {
                         title:'项目',
