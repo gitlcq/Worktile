@@ -1,72 +1,152 @@
 <template>
-    <div>
+    <div class="box">
        <div class="xm-left">
-           <p> <span>项目</span> <i>😘</i></p>
+           <p> <span>项目</span> <i><font-awesome-icon icon="user-plus" class="icos"/></i></p>
+
+            <div class="inp">
+                <i class="wtf wtf-project-add-o"><font-awesome-icon icon="search" class="ser"/></i></i>
+                <input type="text" placeholder="搜索任务">
+            </div>
+
+           
+                 
             <div class="list">
-                <div class="inp">
-                        <i class="wtf wtf-project-add-o">🐷</i>
-                      <input type="text" placeholder="搜索任务">
+                    <div  v-show="isShow" >
+                        <div class="toc-section qunzu_list">
+                            <div class="section-header"  @click="open()">
+                                <a href="javascript:;" class="expand-icon">
+                                    <i class="lcfont">
+                                        <font-awesome-icon icon="caret-right" class="hov2"/>
+                                    </i>
+                                </a>
+                                <a href="javascript:;" class="title ng-binding">工作</a>
+                                <a href="javascript:;" class="action">
+                                    <i class="lcfont">...</i>
+                                </a>
+                            </div>
+                        
+                            <div class="section-body" :style="{height:h}">
+                                <ul>
+                                    <li class="lc-item"  v-for="item of chenyuan">
+                                        <router-link :to='item.url'>
+                                            <a class="contact-list-item" href="javascript:;">
+                                                <span class="channel-icon m-r-5" :style="{background:item.color}">
+                                                    <i class="lcfont">
+                                                        <font-awesome-icon icon="user-plus" class="hov3"/>
+                                                    </i>
+                                                </span>
+                                                <span class="name ng-binding">{{item.name}}</span>
+                                            </a>
+                                        </router-link>
+                                    </li>
+                                </ul>
+                                <div class="rv">
+                                    <router-view></router-view>
+                                </div>
+                            </div>
+                        </div>
                 </div>
+
 
                 <div class="btns">
                     <div v-for="item of vList" :class="['btn' , {vcur : $route.name.indexOf(item.title) != -1}]">
-                        <router-link :to='item.url'>{{item.ico}}{{item.title}}</router-link>
+                        <router-link :to='item.url'>
+                            <i><font-awesome-icon :icon="item.ico" class="icos"/></i>
+                            {{item.title}}
+                        </router-link>
                     </div>
                 </div>
                 
-                <div class="rv">
+                <!-- <div class="rv">
                     <router-view></router-view>
-                </div>
-              </div>
+                </div> -->
             </div>
-       </div>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "items",
-        data(){
-            return {
+
+     export default {
+       data(){
+           return{
+                isShow:true,
+                isShow1:false,
+                isShow3:false,
+                h:0,
+                h1:0,
                 vList:[
-                    {
-                        ico:"😝",
-                        title:'工作',
-                        url:'/B_items/gongzuo/'
-                    },
-                    {
-                         ico:"😝",
-                        title:'项目',
-                        url:'/B_items/xiangmu'
-                    },
-                    {
-                        ico:"🍎",
-                        title:'配置中心',
-                        url:'/B_items/peizhi'
-                    },
-                    {
-                         ico:"😡",
-                        title:"回收站",
-                        url:'/B_items/huishou'
-                    }
-                ]
-            }
-        }
+                        {
+                            ico:"caret-right",
+                            title:'项目',
+                            url:'/B_items/xiangmu'
+                        },
+                        {
+                            ico:"cog",
+                            title:'配置中心',
+                            url:'/B_items/peizhi'
+                        },
+                        {
+                            ico:"trash-alt",
+                            title:"回收站",
+                            url:'/B_items/huishou'
+                        }
+                    ],
+               chenyuan:[
+        			{
+        				name:'我的任务',
+        				color:'#22d7bb',
+        				url:'/B_items/gongzuo'
+        			},
+        			{
+        				name:'时间视图',
+        				color:'#22d7bb',
+        				url:'/B_items/gongzuo'
+        			},
+
+               ],
+               
+           }
+       },
+       methods:{
+           tab(){
+              this.isShow = true;
+              this.isShow1 = false;
+           },
+           tab1(){
+                this.isShow1 = true;
+                this.isShow = false;
+           },
+           open(){
+               if(this.h==0){
+                   this.h = this.chenyuan.length*50+'px';
+               }else{
+                   this.h = 0;
+               }
+           },
+            open1(){
+               if(this.h1==0){
+                   this.h1 = this.jiqiren.length*48+'px';
+               }else{
+                   this.h1 = 0;
+               }
+           }
+       }
     }
 </script>
 
 <style scoped>
-div{
+.box{
     width: 100%;
     height: 100%;
 }
     .xm-left{
-        width: 250px;
+        width: 240px;
         height:100%;
         position: relative;
     }
     .xm-left p{
-        width: 250px;
+        width: 240px;
         height: 50px;
     }
     .xm-left p span{
@@ -83,7 +163,7 @@ div{
         right:15px;
     }
     .xm-left .list{
-        width: 250px;
+        width: 240px;
         height: 400px;
     }
     .xm-left .inp{
@@ -102,7 +182,7 @@ div{
         margin-top:5px;
         margin-left:10px;
     }
-    .xm-left .list input{
+    .xm-left input{
         position: absolute;
         top: 1px;
         left:32px;
@@ -115,10 +195,9 @@ div{
     }
     .btns{
         float: left;
-        margin-top:50px;
         } 
     .btns .btn{
-        width: 250px;
+        width: 240px;
         box-sizing: border-box;
         height: 50px;
         line-height: 50px;
@@ -131,11 +210,144 @@ div{
             border-right:4px solid #22d7bb;
         }
     .rv{
-      width:1000px;
+      width:1100px;
       height: 100%;
       position: absolute;
-      left:250px;
+      left:240px;
       top: 0;
       border:1px solid #ccc;
   }
+
+
+
+
+  .toc-section {
+        width: 240px;
+        margin-bottom: 2px;
+        height: auto;
+        margin-top:50px;
+    }
+    .toc-section .section-header{
+        margin-bottom: 2px;
+        padding: 8px 20px;
+        position: relative;
+        cursor: pointer;
+    }
+    .toc-section .section-header:hover {
+        text-decoration: none;
+        -webkit-box-shadow: 0 0 8px 2px #eee;
+        box-shadow: 0 0 8px 2px #eee;
+    }
+    .toc-section .action {
+        color: #626262;
+        font-size: 18px;
+        font-weight: 500;
+        visibility: hidden;
+        position: absolute;
+        right: 14px;
+        top: 5px;
+        width: 24px;
+        text-align: center;
+        line-height: 20px;
+    }
+    .section-header:hover .action {
+        visibility: visible;
+    }
+    .section-header .expand-icon {
+        margin-right: 6px;
+        color: #aaa;
+        display: inline-block;
+        width: 14px;
+        vertical-align: middle;
+    }
+    a {
+        background-color: transparent;
+    }
+   
+    /* 成员 */
+    .section-body {
+        margin-bottom: 0;
+        overflow: hidden;
+        transition: all .35s ease 0s;
+    }
+     .qunzu_list ul li {
+        display: block;
+        margin-bottom: 2px;
+        padding: 0 20px;
+        border-right: 3px solid transparent;
+    }
+     .qunzu_list ul li:hover {
+        -webkit-box-shadow: 0 0 8px 2px #eee;
+        box-shadow: 0 0 8px 2px #eee;
+        background: 0 0;
+    }
+    .qunzu_list ul li.active {
+        text-decoration: none;
+        border-right: 3px solid #22d7bb;
+        background: #e7f9f6;
+    }
+    .qunzu_list ul li.active:hover {
+        background: 0 0;
+    }
+    .qunzu_list ul li .contact-list-item {
+        display: block;
+        line-height: 48px;
+        color: #666;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    .channel-icon {
+        line-height: 24px;
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    .channel-icon, .chat-list.nav-pills li a .lc-avatar {
+        width: 24px;
+        height: 24px;
+    }
+    .qunzu_list ul li .contact-list-item .name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .channel-icon i {
+        font-size: 14px;
+    }
+    .lcfont {
+        font-family: lcfont!important;
+         display: inline-block;
+    }
+    .lc-avatar-24 img {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        border-radius: 24px;
+        vertical-align: middle;
+    }
+    .qunzu_list ul li .contact-list-item .lc-avatar {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .rv{
+        position: absolute;
+        top:0;
+        left: 240px;
+    }
+.ser{
+    margin-top:5px;
+    margin-left:1px;
+     color:#848484;
+}
+.icos{
+    font-size:14px;
+    margin-left:-10px;
+    color:#848484;
+}
 </style>

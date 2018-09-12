@@ -63,7 +63,7 @@ export default {
     color:#22d7bb;
     }
     .er{
-       width:93%;
+       width:100%;
        height: 100%;
        position: absolute;
        border:15px solid rgb(238, 238, 238);

@@ -17,17 +17,13 @@ export default {
         return {
             san:[
                 {
-                    title:'提醒管理',
-                    url:'/B_items/peizhi/four/txgl',
+                    title:'活动任务',
+                    url:'/B_items/gongzuo/fengpei/hdrw',
                 },
                 {
-                    title:'通知管理',
-                    url:'/B_items/peizhi/four/tzgl',
-                },
-                {
-                    title:'事件管理',
-                    url:'/B_items/peizhi/four/sjgl',
-                },
+                    title:'完成任务',
+                    url:'/B_items/gongzuo/fengpei/wcrw',
+                }
             ]
         }
     }
@@ -51,10 +47,11 @@ export default {
     .san .router-link-active{
     color:#22d7bb;
     }
- .er{
+     .er{
        width:100%;
        height: 100%;
        position: absolute;
        border:15px solid rgb(238, 238, 238);
     }
+
 </style>
