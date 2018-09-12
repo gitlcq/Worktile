@@ -16,10 +16,10 @@ import {
   faEnvelope,
   faThLarge,
   faPhone,
-  faFileAlt,
   faCog,
   faTrashAlt,
   faEnvelopeOpenText,
+  faFileAlt,
   faCopy,
   faPen
 
