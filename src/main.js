@@ -11,11 +11,18 @@ import {
   faUserFriends,
   faSitemap,
   faCaretRight,
-  faBuilding
+  faBuilding,
+  faAddressCard,
+  faEnvelope,
+  faThLarge,
+  faPhone,
+  faFileAlt
+
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,faCaretRight,faBuilding);
+library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,
+    faCaretRight,faBuilding,faAddressCard,faEnvelope,faThLarge,faPhone,faFileAlt);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 
@@ -226,11 +233,52 @@ const r = [
                 name:'五组'
             },
             {
+                path:'/addressBook/richeng',
+                component:require('./components/E_address/richeng/richeng.vue').default,
+                name:'日程助手'
+            },
+            {
+                path:'/addressBook/wangpan',
+                component:require('./components/E_address/wangpan/wangpan.vue').default,
+                name:'网盘助手'
+            },
+            {
+                path:'/addressBook/xiangmu',
+                component:require('./components/E_address/xiangmu/xiangmu.vue').default,
+                name:'项目助手'
+            },
+            {
+                path:'/addressBook/xiaote',
+                component:require('./components/E_address/xiaote/xiaote.vue').default,
+                name:'小特机器人'
+            },
+            {
+                path:'/addressBook/lcq',
+                component:require('./components/E_address/lcq/lcq.vue').default,
+                name:'A'
+            },{
+                path:'/addressBook/lyj',
+                component:require('./components/E_address/lyj/lyj.vue').default,
+                name:'B'
+            },{
+                path:'/addressBook/lc',
+                component:require('./components/E_address/lc/lc.vue').default,
+                name:'C'
+            },{
+                path:'/addressBook/lh',
+                component:require('./components/E_address/lh/lh.vue').default,
+                name:'D'
+            },{
+                path:'/addressBook/yxx',
+                component:require('./components/E_address/yxx/yxx.vue').default,
+                name:'E'
+            },
+            {
                 // 如果用户随便输入地址，转到一组
                 path:'*',
                 redirect:'/E_address/yizu/'
               }
-        ]
+        ],redirect:'/addressBook/lcq/'
     },
     {
       //如果用户随便输入地址,转到首页   给一个重定位

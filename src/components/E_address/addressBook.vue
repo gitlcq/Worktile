@@ -4,7 +4,7 @@
            <div class="txl_header">
                <span class="title">通讯录</span>
                <div class="txl_more">
-                   <a href="javascript:;">
+                   <a href="javascript:;" @click="add()">
                        <font-awesome-icon icon="user-plus" class="up_hov"/>
                    </a>
                </div>
@@ -63,9 +63,7 @@
                                         </router-link>
                                     </li>
                                 </ul>
-                                 <div class="rv">
-                                    <router-view></router-view>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- 机器人列表 -->
@@ -85,34 +83,38 @@
                            <div class="section-body" :style="{height:h1}">
                                 <ul>
                                     <li class="lc-item" v-for="i of jiqiren">
-                                        <a class="contact-list-item" href="javascript:;">
-                                            <div class="lc-avatar">
-                                                <div class="lc-avatar-24">
-                                                    <img  class="lc-avatar-avatar" alt="" :src="i.img">
+                                        <router-link :to='i.url'>
+                                            <a class="contact-list-item" href="javascript:;">
+                                                <div class="lc-avatar">
+                                                    <div class="lc-avatar-24">
+                                                        <img  class="lc-avatar-avatar" alt="" :src="i.img">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <span class="name ng-binding">{{i.name}}</span>
-                                        </a>
+                                                <span class="name ng-binding">{{i.name}}</span>
+                                            </a>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <!-- 联系人列表 -->
                         <div class="lianxiren">
-                            <ul class="lxr_ul">
-                                <li class="lxr_li1">A</li>
-                                <li class="lxr_li2">
-                                    <a href="javascript:;" class="contact-list-item">
-                                        <div class="lc-avatar">
-                                            <div class="lc-avatar-24">
-                                                <span class="lc-avatar-def" style="background-color: rgb(239, 126, 222);">
-                                                    <div class="ng-binding">AA</div>
-                                                </span>
+                            <ul class="lxr_ul"  v-for="item of lianxiren">
+                                <li class="lxr_li1">{{item.zimu}}</li>
+                                 <router-link :to='item.url'>
+                                    <li class="lxr_li2">
+                                        <a href="javascript:;" class="contact-list-item">
+                                            <div class="lc-avatar">
+                                                <div class="lc-avatar-24">
+                                                    <span class="lc-avatar-def" :style="{background:item.color}">
+                                                        <div>{{item.zimu}}</div>
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <span class="name">aa</span>
-                                    </a>
-                                </li>
+                                            <span class="name">{{item.name}}</span>
+                                        </a>
+                                    </li>
+                                </router-link>
                             </ul>
                         </div>
                     </div>
@@ -144,6 +146,92 @@
                 </div>
            </div>
        </div>
+        <div class="rv">
+            <router-view></router-view>
+        </div>
+        <!-- 添加成员 -->
+        <div  v-show="isShow4">
+            <div class="black"></div>
+            <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header ng-scope">
+                        <a href="javascript:;" class="modal-close" @click="close()">
+                            <i class="lcfont lc-close" style="font-size:30px;">×</i>
+                        </a>
+                        <h3 class="modal-title ng-scope">添加成员</h3>
+                    </div>
+                    <div class="modal-body ng-scope">
+                        <div class="frame min-h-600 form-horizontal">
+                            <div class="thy-nav nav-thirdly justify-content-center">
+                                <a href="javascript:;" class="nav-link ng-scope active">快速添加成员</a>
+                                <a href="javascript:;" class="nav-link ng-scope">通过邮件邀请</a>
+                                <a href="javascript:;" class="nav-link ng-scope">通过链接注册</a>
+                            </div>
+                            <div>
+                                <p class="p-20 ng-scope">快速添加成员帐号，设置默认密码，首次登录时需要修改默认密码。</p>
+                                <form autocomplete="off" class="w5c-form control-panel" name="formNewUserDirect" role="form">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label label-required">姓名</label>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" name="displayName" class="form-control valid" placeholder="请输入对方真实姓名">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label label-required">登录用户名</label>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" name="username" autocomplete="off" class="form-control valid" placeholder="请输入对方用户名，如Lily">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label label-required">邮箱或者手机号</label>
+
+                                        <div class="col-sm-9">
+                                            <input type="text" name="emailOrMobile" autocomplete="off" class="form-control valid" placeholder="输入邮箱地址或者手机号">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label label-required">默认密码</label>
+
+                                        <div class="col-sm-9">
+                                            <input minlength="6" maxlength="50" type="password" name="password" class="form-control valid" placeholder="输入默认密码">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">员工编号</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control valid" name="userCode" type="text" placeholder="输入员工编号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label ng-scope" translate="所属部门">所属部门</label>
+
+                                        <div class="col-sm-9">
+                                            <div type="department">
+                                                <div class="lc-select ng-scope" ng-if="!config.multiple">
+                                                    <input type="text" class="form-control ng-scope" readonly="readonly" ng-if="treeData.length > 0" ng-value="getSelectedName()" placeholder="不在任何部门中"><!-- end ngIf: treeData.length > 0 -->
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-6 offset-sm-3">
+                                            <button type="button" class="btn btn-primary">添加成员</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -154,6 +242,7 @@
                isShow:true,
                isShow1:false,
                isShow3:false,
+                isShow4:false,
                h:0,
                h1:0,
                chenyuan:[
@@ -188,19 +277,56 @@
                    {
                        name:'日程助手',
                        img:'https://s3.cn-north-1.amazonaws.com.cn/lcavatar/calendar_40x40.png',
+                       url:'/addressBook/richeng'
                    },
                    {
                        name:'网盘助手',
                        img:'https://s3.cn-north-1.amazonaws.com.cn/lcavatar/drive_40x40.png',
+                       url:'/addressBook/wangpan'
                    },
                    {
                        name:'项目助手',
                        img:'https://s3.cn-north-1.amazonaws.com.cn/lcavatar/mission_40x40.png',
+                       url:'/addressBook/xiangmu'
                    },
                    {
                        name:'小特机器人',
                        img:'https://s3.cn-north-1.amazonaws.com.cn/lcavatar/381df779-62e6-49de-8792-620b94a5582d_40x40.png',
+                       url:'/addressBook/xiaote'
                    },
+               ],
+               lianxiren:[
+                   {
+                       zimu:"A",
+                       color:"rgb(239, 126, 222)",
+                       name:"A",
+                       url:'/addressBook/lcq/'
+                   },
+                   {
+                       zimu:"B",
+                       color:"#28a745",
+                       name:"B",
+                        url:'/addressBook/lyj'
+                   },
+                   {
+                       zimu:"C",
+                       color:"#dc3545",
+                       name:"C",
+                        url:'/addressBook/lc'
+                   },
+                   {
+                       zimu:"D",
+                       color:"#007bff",
+                       name:"D",
+                        url:'/addressBook/lh'
+                   },
+                   {
+                       zimu:"E",
+                       color:"#6f42c1",
+                       name:"E",
+                        url:'/addressBook/yxx'
+                   },
+
                ]
            }
        },
@@ -226,7 +352,13 @@
                }else{
                    this.h1 = 0;
                }
-           }
+           },
+            add(){
+                    this.isShow4 =true
+                },
+            close(){
+                this.isShow4 = false
+            }
        }
     }
 </script>
@@ -610,5 +742,205 @@
         position: absolute;
         top:0;
         left: 240px;
+        width: 100%;
+    }
+    /* 添加成员 */
+    .black{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: .3;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .modal-dialog {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+   .modal-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 660px;
+        height: auto;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 0 solid rgba(0,0,0,.2);
+        border-radius: .3rem;
+        box-shadow: 0 0 1.5rem rgba(0,0,0,.4);
+        outline: 0;
+        margin: 60px auto;
+        z-index: 9999;
+    }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #eee;
+        border-top-left-radius: .3rem;
+        border-top-right-radius: .3rem;
+    }
+    .modal-header {
+        padding: 0 1.875rem;
+        min-height: 1.5px;
+        align-items: center;
+        height: 50px;
+    }
+    .modal-close {
+        color: #ddd;
+        line-height: 50px;
+    }
+    .modal-header .modal-close {
+        order: 1;
+    }
+    .modal-header h3 {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .modal-title {
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+    .modal-body, .modal-footer {
+        padding: 1.25rem 1.875rem 1.875rem;
+    }
+    .modal-body {
+        position: relative;
+        flex: 1 1 auto;
+    }
+    .justify-content-center {
+        justify-content: center!important;
+    }
+    .thy-nav {
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+    .thy-layout-header, .thy-nav {
+        display: flex;
+    }
+    .nav-thirdly .nav-link.active, .nav-thirdly .nav-link:active, .nav-thirdly .nav-link:focus, .nav-thirdly .nav-link:hover {
+        border-bottom: none;
+    }
+    .nav-thirdly .nav-link {
+        padding: .532rem 0;
+        margin-right: 40px;
+        position: relative;
+    }
+    .nav-link {
+        display: block;
+        transform: translateY(1px);
+        color: #888;
+    }
+    .nav-link.active, .nav-link.active i, .nav-link:active i, .nav-link:focus i, .nav-link:hover i {
+        color: #22d7bb;
+    }
+    .btn, .nav-link, .thy-badge-count {
+        text-align: center;
+    }
+    .nav-secondary-divider .nav-link:after, .nav-thirdly .nav-link:after {
+        width: 0;
+        content: "";
+        border-right: 1px solid #eee;
+        top: calc(50% - 15px / 2);
+        height: 15px;
+    }
+    .nav-thirdly .nav-link:after {
+        display: block;
+        position: absolute;
+        right: -20px;
+    }
+    .p-20 {
+        padding: 20px!important;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    .form-horizontal .form-group {
+        margin-right: -15px;
+    }
+    .form-horizontal .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -15px;
+    }
+    .form-group .control-label {
+        color: #888;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: right;
+        margin-bottom: 0;
+        padding-top: 6px;
+        width: 150px;
+        height: 38px;
+    }
+    .form-group .label-required::before {
+        content: '*';
+        color: #ff5b57;
+        margin-right: 3px;
+        position: relative;
+        top: 3px;
+    }
+    .label-required::before {
+        content: '*';
+        margin-right: 3px;
+        position: relative;
+        top: 3px;
+    }
+     .form-group .col-sm-9{
+         width: 470px;
+         height: 38px;
+        margin-left: 10px;
+     }
+   .form-control {
+        display: block;
+        width: 100%;
+        line-height: 1.5;
+        color: #333;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #eee;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .form-control, .input-group-text {
+        padding: .469rem .875rem;
+        font-size: .875rem;
+    }
+    input::-webkit-input-placeholder {
+        color: #CACACA;
+        font-size: 14px;
+    }
+   .form-control:not(:disabled):hover {
+        border-color: #22d7bb;
+    }
+    .offset-sm-3 {
+        margin-left: 40%;
+    }
+    .btn-primary:hover {
+        box-shadow: 0 2px 5px 1px rgba(34,215,187,.6);
+    }
+    .btn-primary, .btn-primary:hover {
+        color: #fff;
+        background-color: #22d7bb;
+        border-color: #22d7bb;
+    }
+    .btn {
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .469rem 26px;
+        font-size: .875rem;
+        line-height: 1.5;
+        min-width: 106px;
+        border-radius: 1.25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
 </style>
