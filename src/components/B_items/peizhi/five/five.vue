@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss' scoped>
     .san{
         width: 100%;
         height: 40px;

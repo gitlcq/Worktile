@@ -12,30 +12,30 @@
                  
             <div class="list">
                     <div  v-show="isShow" >
-                        <div class="toc-section qunzu_list">
-                            <div class="section-header"  @click="open()">
-                                <a href="javascript:;" class="expand-icon">
-                                    <i class="lcfont">
+                        <div class="toc qz">
+                            <div class="header"  @click="open()">
+                                <a href="javascript:;" class="ex">
+                                    <i class="lh">
                                         <font-awesome-icon icon="caret-right" class="hov2"/>
                                     </i>
                                 </a>
-                                <a href="javascript:;" class="title ng-binding">工作</a>
-                                <a href="javascript:;" class="action">
-                                    <i class="lcfont">...</i>
+                                <a href="javascript:;" class="title bb">工作</a>
+                                <a href="javascript:;" class="act">
+                                    <i class="lh">...</i>
                                 </a>
                             </div>
                         
-                            <div class="section-body" :style="{height:h}">
+                            <div class="cb" :style="{height:h}">
                                 <ul>
-                                    <li class="lc-item"  v-for="item of chenyuan">
+                                    <li class="lt"  v-for="item of chenyuan">
                                         <router-link :to='item.url'>
-                                            <a class="contact-list-item" href="javascript:;">
-                                                <span class="channel-icon m-r-5" :style="{background:item.color}">
-                                                    <i class="lcfont">
+                                            <a class="cli" href="javascript:;">
+                                                <span class="chi m-r-5" :style="{background:item.color}">
+                                                    <i class="lh">
                                                         <font-awesome-icon icon="user-plus" class="hov3"/>
                                                     </i>
                                                 </span>
-                                                <span class="name ng-binding">{{item.name}}</span>
+                                                <span class="name bb">{{item.name}}</span>
                                             </a>
                                         </router-link>
                                     </li>
@@ -221,24 +221,24 @@
 
 
 
-  .toc-section {
+  .toc {
         width: 240px;
         margin-bottom: 2px;
         height: auto;
         margin-top:50px;
     }
-    .toc-section .section-header{
+    .toc .header{
         margin-bottom: 2px;
         padding: 8px 20px;
         position: relative;
         cursor: pointer;
     }
-    .toc-section .section-header:hover {
+    .toc .header:hover {
         text-decoration: none;
         -webkit-box-shadow: 0 0 8px 2px #eee;
         box-shadow: 0 0 8px 2px #eee;
     }
-    .toc-section .action {
+    .toc .act {
         color: #626262;
         font-size: 18px;
         font-weight: 500;
@@ -250,10 +250,10 @@
         text-align: center;
         line-height: 20px;
     }
-    .section-header:hover .action {
+    .header:hover .act {
         visibility: visible;
     }
-    .section-header .expand-icon {
+    .header .ex {
         margin-right: 6px;
         color: #aaa;
         display: inline-block;
@@ -265,38 +265,38 @@
     }
    
     /* 成员 */
-    .section-body {
+    .cb {
         margin-bottom: 0;
         overflow: hidden;
         transition: all .35s ease 0s;
     }
-     .qunzu_list ul li {
+     .qz ul li {
         display: block;
         margin-bottom: 2px;
         padding: 0 20px;
         border-right: 3px solid transparent;
     }
-     .qunzu_list ul li:hover {
+     .qz ul li:hover {
         -webkit-box-shadow: 0 0 8px 2px #eee;
         box-shadow: 0 0 8px 2px #eee;
         background: 0 0;
     }
-    .qunzu_list ul li.active {
+    .qz ul li.active {
         text-decoration: none;
         border-right: 3px solid #22d7bb;
         background: #e7f9f6;
     }
-    .qunzu_list ul li.active:hover {
+    .qz ul li.active:hover {
         background: 0 0;
     }
-    .qunzu_list ul li .contact-list-item {
+    .qz ul li .cli {
         display: block;
         line-height: 48px;
         color: #666;
         font-size: 14px;
         text-decoration: none;
     }
-    .channel-icon {
+    .chi {
         line-height: 24px;
         border-radius: 50%;
         color: #fff;
@@ -304,11 +304,11 @@
         vertical-align: middle;
         display: inline-block;
     }
-    .channel-icon, .chat-list.nav-pills li a .lc-avatar {
+    .chi, .chat-list.nav-pills li a .lc-avatar {
         width: 24px;
         height: 24px;
     }
-    .qunzu_list ul li .contact-list-item .name {
+    .qz ul li .cli .name {
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -316,11 +316,11 @@
         display: inline-block;
         vertical-align: middle;
     }
-    .channel-icon i {
+    .chi i {
         font-size: 14px;
     }
-    .lcfont {
-        font-family: lcfont!important;
+    .lh {
+        font-family: lh!important;
          display: inline-block;
     }
     .lc-avatar-24 img {
@@ -331,7 +331,7 @@
         border-radius: 24px;
         vertical-align: middle;
     }
-    .qunzu_list ul li .contact-list-item .lc-avatar {
+    .qz ul li .cli .lc-avatar {
         vertical-align: middle;
         margin-right: 5px;
     }

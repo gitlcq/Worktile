@@ -50,7 +50,7 @@ const r = [
         name:'项目',
         children:[
             {
-                path:'/B_items/gongzuo/',
+                path:'/B_items/gongzuo',
                 component:require('./components/B_items/gongzuo/gongzuo.vue').default,
                 name:"工作",
                 children:[
@@ -257,7 +257,7 @@ const r = [
                 component:require('./components/B_items/huishou/huishou.vue').default,
                 name:"回收站",
             },
-        ]
+        ],redirect:'/B_items/gongzuo/'
     },
     {
         path:'/calendar',
