@@ -267,7 +267,56 @@ const r = [
     {
         path:'/dbank',
         component:Dbank.default,
-        name:'网盘'
+        name:'网盘',
+        children:[
+            {
+                path:'/D_dbank/qiye',
+                component:require('./components/D_dbank/qiye/qiye.vue').default,
+                name:'企业网盘',
+                children:[
+                    {
+                        path:'/D_dbank/qiye/gs',
+                        component:require('./components/D_dbank/qiye/gs/gs.vue').default,
+                        title:'公司制度'
+                    },
+                    {
+                        path:'/D_dbank/qiye/zl',
+                        component:require('./components/D_dbank/qiye/zl/zl.vue').default,
+                        title:'资料共享'
+                    },
+                    {
+                        path:'/D_dbank/qiye/qx',
+                        component:require('./components/D_dbank/qiye/qx/qx.vue').default,
+                        title:'缺陷管理'
+                    }
+                ]
+            },
+            {
+                path:'/D_dbank/geren',
+                component:require('./components/D_dbank/geren/geren.vue').default,
+                name:'个人网盘'
+            },
+            {
+                path:'/D_dbank/chengyuan',
+                component:require('./components/D_dbank/chengyuan/chengyuan.vue').default,
+                name:'成员'
+            },
+            {
+                path:'/D_dbank/baioqian',
+                component:require('./components/D_dbank/baioqian/baioqian.vue').default,
+                name:'标签'
+            },
+            {
+                path:'/D_dbank/gongxiang',
+                component:require('./components/D_dbank/gongxiang/gongxiang.vue').default,
+                name:'与我共享'
+            },
+            {
+                path:'/D_dbank/huishou',
+                component:require('./components/D_dbank/huishou/huishou.vue').default,
+                name:'回收站'
+            }
+        ]
     },
     {
         path:'/addressBook',
