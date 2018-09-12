@@ -1,6 +1,12 @@
 <template>
     <div>
-        <h1>项目</h1>
+        <div class="top">
+             <i>😭</i>
+            <span>项目</span>
+        </div>
+         <div class="er">
+                <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -11,5 +17,25 @@ export default {
 </script>
 
 <style lang='scss' scoped>
- 
+     .top{
+        width: 100%;
+        height:50px;
+        border-bottom:1px solid #ccc;
+    }
+    .top i{
+        font-style:normal;
+        display:inline-block;
+        margin-top:15px;
+        margin-left:15px;
+    }
+    .top span {
+        display:inline-block;
+        font-size:16px;
+    }
+    .er{
+       width:93%;
+       height: 100%;
+       position: absolute;
+       border:15px solid rgb(238, 238, 238);
+    }
 </style>

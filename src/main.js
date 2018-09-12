@@ -25,7 +25,6 @@ library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,
     faCaretRight,faBuilding,faAddressCard,faEnvelope,faThLarge,faPhone,faFileAlt);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-
 Vue.use(Vuex);
 
 Vue.use(VueRouter);
@@ -66,12 +65,12 @@ const r = [
                 name:"配置中心",
                 children:[
                     {
-                        path:'/B_items/peizhi/one',
+                        path:'/B_items/peizhi/one/',
                         component:require('./components/B_items/peizhi/one/one.vue').default,
                         name:'项日',
                         children:[
                             {
-                                path:'/B_items/peizhi/one/xmmb',
+                                path:'/B_items/peizhi/one/xmmb/',
                                 component:require('./components/B_items/peizhi/one/xmmb/xmmb.vue').default,
                                 name:'项日模板'
                             },
@@ -84,6 +83,10 @@ const r = [
                                 path:'/B_items/peizhi/one/bbgl',
                                 component:require('./components/B_items/peizhi/one/bbgl/bbgl.vue').default,
                                 name:'报表管理'
+                            },
+                            {
+                                path:"*",
+                                redirect:'/B_items/peizhi/one/xmmb'
                             }
                         ]
                     },
@@ -181,7 +184,10 @@ const r = [
                             }
                         ]
                     },
-                    
+                    {
+                        path:'*',
+                        redirect:'/B_items/peizhi/one/'  
+                    }
                 ]
             },
             {
@@ -199,7 +205,56 @@ const r = [
     {
         path:'/dbank',
         component:Dbank.default,
-        name:'网盘'
+        name:'网盘',
+        children:[
+            {
+                path:'/D_dbank/qiye',
+                component:require('./components/D_dbank/qiye/qiye.vue').default,
+                name:'企业网盘',
+                children:[
+                    {
+                        path:'/D_dbank/qiye/gs',
+                        component:require('./components/D_dbank/qiye/gs/gs.vue').default,
+                        title:'公司制度'
+                    },
+                    {
+                        path:'/D_dbank/qiye/zl',
+                        component:require('./components/D_dbank/qiye/zl/zl.vue').default,
+                        title:'资料共享'
+                    },
+                    {
+                        path:'/D_dbank/qiye/qx',
+                        component:require('./components/D_dbank/qiye/qx/qx.vue').default,
+                        title:'缺陷管理'
+                    }
+                ]
+            },
+            {
+                path:'/D_dbank/geren',
+                component:require('./components/D_dbank/geren/geren.vue').default,
+                name:'个人网盘'
+            },
+            {
+                path:'/D_dbank/chengyuan',
+                component:require('./components/D_dbank/chengyuan/chengyuan.vue').default,
+                name:'成员'
+            },
+            {
+                path:'/D_dbank/baioqian',
+                component:require('./components/D_dbank/baioqian/baioqian.vue').default,
+                name:'标签'
+            },
+            {
+                path:'/D_dbank/gongxiang',
+                component:require('./components/D_dbank/gongxiang/gongxiang.vue').default,
+                name:'与我共享'
+            },
+            {
+                path:'/D_dbank/huishou',
+                component:require('./components/D_dbank/huishou/huishou.vue').default,
+                name:'回收站'
+            }
+        ]
     },
     {
         path:'/addressBook',

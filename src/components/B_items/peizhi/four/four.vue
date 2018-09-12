@@ -51,5 +51,10 @@ export default {
     .san .router-link-active{
     color:#22d7bb;
     }
-
+ .er{
+       width:93%;
+       height: 100%;
+       position: absolute;
+       border:15px solid rgb(238, 238, 238);
+    }
 </style>
