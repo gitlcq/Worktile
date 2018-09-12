@@ -16,13 +16,20 @@ import {
   faEnvelope,
   faThLarge,
   faPhone,
-  faFileAlt
+  faFileAlt,
+  faCog,
+  faTrashAlt,
+  faEnvelopeOpenText,
+  faCopy,
+  faPen
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,
-    faCaretRight,faBuilding,faAddressCard,faEnvelope,faThLarge,faPhone,faFileAlt);
+    faCaretRight,faBuilding,faAddressCard,faEnvelope,faThLarge,faPhone,faFileAlt,
+    faCog,faTrashAlt,faEnvelopeOpenText,faCopy,faPen);
+
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.use(Vuex);
@@ -53,6 +60,76 @@ const r = [
                 path:'/B_items/gongzuo/',
                 component:require('./components/B_items/gongzuo/gongzuo.vue').default,
                 name:"工作",
+                children:[
+                    {
+                        path:'/B_items/gongzuo/fuze',
+                        component:require('./components/B_items/gongzuo/fuze/fuze.vue').default,
+                        name:'我负责的',
+                        children:[
+                            {
+                                path:'/B_items/gongzuo/fuze/hdrw/',
+                                component:require('./components/B_items/gongzuo/fuze/hdrw/hdrw.vue').default,
+                                name:'活动任务'
+                            },
+                            {
+                                path:'/B_items/gongzuo/fuze/wcrw/',
+                                component:require('./components/B_items/gongzuo/fuze/wcrw/wcrw.vue').default,
+                                name:'活动任务'
+                            },
+                        ],redirect:'/B_items/gongzuo/fuze/hdrw/'
+                    },
+                    {
+                        path:'/B_items/gongzuo/fengpei',
+                        component:require('./components/B_items/gongzuo/fengpei/fengpei.vue').default,
+                        name:'我分配的',
+                        children:[
+                            {
+                                path:'/B_items/gongzuo/fengpei/hdrw/',
+                                component:require('./components/B_items/gongzuo/fengpei/hdrw/hdrw.vue').default,
+                                name:'活动任务'
+                            },
+                            {
+                                path:'/B_items/gongzuo/fengpei/wcrw/',
+                                component:require('./components/B_items/gongzuo/fengpei/wcrw/wcrw.vue').default,
+                                name:'活动任务'
+                            },
+                        ],redirect:'/B_items/gongzuo/fengpei/hdrw/'
+                    },
+                    {
+                        path:'/B_items/gongzuo/canyv',
+                        component:require('./components/B_items/gongzuo/canyv/canyv.vue').default,
+                        name:'我参与的',
+                        children:[
+                            {
+                                path:'/B_items/gongzuo/canyv/hdrw/',
+                                component:require('./components/B_items/gongzuo/canyv/hdrw/hdrw.vue').default,
+                                name:'活动任务'
+                            },
+                            {
+                                path:'/B_items/gongzuo/canyv/wcrw/',
+                                component:require('./components/B_items/gongzuo/canyv/wcrw/wcrw.vue').default,
+                                name:'活动任务'
+                            },
+                        ],redirect:'/B_items/gongzuo/canyv/hdrw/'
+                    },
+                    {
+                        path:'/B_items/gongzuo/chuangjian',
+                        component:require('./components/B_items/gongzuo/chuangjian/chuangjian.vue').default,
+                        name:'我创建的',
+                        children:[
+                            {
+                                path:'/B_items/gongzuo/chuangjian/hdrw/',
+                                component:require('./components/B_items/gongzuo/chuangjian/hdrw/hdrw.vue').default,
+                                name:'活动任务'
+                            },
+                            {
+                                path:'/B_items/gongzuo/chuangjian/wcrw/',
+                                component:require('./components/B_items/gongzuo/chuangjian/wcrw/wcrw.vue').default,
+                                name:'活动任务'
+                            },
+                        ],redirect:'/B_items/gongzuo/chuangjian/hdrw/'
+                    },
+                ],redirect:'/B_items/gongzuo/fuze'
             },
             {
                 path:"/B_items/xiangmu",
@@ -88,7 +165,7 @@ const r = [
                                 path:"*",
                                 redirect:'/B_items/peizhi/one/xmmb'
                             }
-                        ]
+                        ],redirect:'/B_items/peizhi/one/xmmb'
                     },
                     {
                         path:'/B_items/peizhi/tow',
@@ -125,7 +202,7 @@ const r = [
                                 component:require('./components/B_items/peizhi/tow/yxjgl/yxjgl.vue').default,
                                 name:'优先级管理',
                             },
-                        ]
+                        ],redirect:'/B_items/peizhi/tow/rwlx'
                     },
                     {
                         path:'/B_items/peizhi/three',
@@ -148,7 +225,7 @@ const r = [
                                 name:'权限管理',
                             }
                             
-                        ]
+                        ],redirect:'/B_items/peizhi/three/jsgl'
                     },
                      {
                         path:'/B_items/peizhi/four',
@@ -170,7 +247,7 @@ const r = [
                                 component:require('./components/B_items/peizhi/four/sjgl/sjgl.vue').default,
                                 name:'事件管理', 
                             }
-                        ]
+                        ],redirect:'/B_items/peizhi/four/txgl'
                     },
                     {
                         path:'/B_items/peizhi/five',
@@ -182,13 +259,14 @@ const r = [
                                 component:require('./components/B_items/peizhi/five/gzzj/gzzj.vue').default,
                                 name:'工作组件', 
                             }
-                        ]
+                        ],redirect:'/B_items/peizhi/five/gzzj'
                     },
                     {
                         path:'*',
                         redirect:'/B_items/peizhi/one/'  
                     }
-                ]
+                ],redirect:'/B_items/peizhi/one'
+
             },
             {
                 path:"/B_items/huishou",

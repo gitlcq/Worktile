@@ -17,16 +17,20 @@ export default {
         return {
             san:[
                 {
-                    title:'工作组件',
-                    url:'/B_items/peizhi/five/gzzj',
+                    title:'活动任务',
+                    url:'/B_items/gongzuo/chuangjian/hdrw',
                 },
+                {
+                    title:'完成任务',
+                    url:'/B_items/gongzuo/chuangjian/wcrw',
+                }
             ]
         }
     }
 }
 </script>
 
-<style lang="scss" scoped> 
+<style>
     .san{
         width: 100%;
         height: 40px;
@@ -36,16 +40,18 @@ export default {
         list-style:none;
         width: 80px;
         height: 20px;
+        border-right:1px solid #ccc;
         margin-left:40px;
         margin-top:10px;
     }
     .san .router-link-active{
     color:#22d7bb;
     }
-    .er{
+     .er{
        width:100%;
        height: 100%;
        position: absolute;
        border:15px solid rgb(238, 238, 238);
     }
+
 </style>

@@ -1,14 +1,8 @@
 <template>
     <div>
          <div class="top">
-            <i>🍎</i>
+            <i><font-awesome-icon icon="cog" class="icos"/></i>
             <span>配置中心</span>
-
-            <!-- <div class="but">
-                <div v-for="item of pz" :class="['buta' , {ocur : $route.name.indexOf(item.title) != -1}]">
-                    <router-link :to='item.url'>{{item.title}}</router-link>
-                </div>
-            </div> -->
             <ul>
                 <li v-for="value of pz" :class="['buta' , {ocur : $route.name.indexOf(value.title) != -1}]">
                     <router-link :to="value.url">{{value.title}}</router-link>
@@ -88,4 +82,9 @@ export default {
     .router-link-active{
     color:#22d7bb;
     }
+    .icos{
+    font-size:14px;
+    margin-left:-10px;
+    color:#848484;
+}
 </style>
