@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-
+var babelpolyfill = require("babel-polyfill");
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -66,7 +66,11 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader'
+      },
     ]
   },
   resolve: {

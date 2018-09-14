@@ -56,12 +56,13 @@ export default {
         width: 100%;
         height:50px;
         border-bottom:1px solid #ccc;
+        background-color: #fff;
     }
     .top i{
         font-style:normal;
         display:inline-block;
         margin-top:15px;
-        margin-left:15px;
+        margin-left:30px;
     }
     .top span {
         display:inline-block;
@@ -70,7 +71,7 @@ export default {
     ul{
         position: absolute;
         top: 0;
-        left: 270px;
+        left: 350px;
     }
     ul li{
         list-style:none;

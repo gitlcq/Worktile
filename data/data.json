@@ -1,0 +1,137 @@
+{
+  "mapList": [
+    {
+      "name": "A",
+      "id": "id",
+      "color": "rgb(239, 126, 222)",
+      "phone": 12345678910,
+      "zimu": "A",
+      "url": "lcq"
+    },
+    {
+      "name": "B",
+      "phone": 12345678910,
+      "color": "#28a745",
+      "zimu": "B",
+      "url": "lyj"
+    },
+    {
+      "name": "cshhj",
+      "id": "p94gyx8z",
+      "color": "rgb(202,62,135)",
+      "phone": "656456165",
+      "zimu": "C",
+      "url": "lc"
+    },
+    {
+      "name": "cfdgrdg",
+      "id": "3pyfv8yz",
+      "color": "rgb(192,113,220)",
+      "phone": "656456165",
+      "zimu": "C",
+      "url": "yxx"
+    }
+  ],
+  "maplh": [
+    {
+      "id": "1",
+      "ico": "envelope-open-text",
+      "xiangmu": "事物处理",
+      "beizhu": "适用于最简单的事务管理",
+      "leixing": "通用",
+      "zhuangtai": "已启用",
+      "color": "one"
+    },
+    {
+      "id": "2",
+      "ico": "envelope-open-text",
+      "xiangmu": "项目管理",
+      "beizhu": "适用于通用的项目管理",
+      "leixing": "通用",
+      "zhuangtai": "已启用",
+      "color": "tow"
+    },
+    {
+      "id": "3",
+      "ico": "envelope-open-text",
+      "xiangmu": "敏捷开发",
+      "beizhu": "适用于敏捷研发管理，包括迭代、需求和缺陷",
+      "leixing": "软件",
+      "zhuangtai": "已启用",
+      "color": "three"
+    }
+  ],
+  "mapItem": [
+    {
+      "title": "项目助手",
+      "url": "/A_news/xiangmu",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/mission_40x40.png",
+      "id": "12"
+    },
+    {
+      "title": "小特机器人",
+      "url": "/A_news/xiaote",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/381df779-62e6-49de-8792-620b94a5582d_40x40.png",
+      "id": "1234"
+    },
+    {
+      "title": "网盘助手",
+      "url": "/A_news/wangpan",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/drive_40x40.png",
+      "id": "123434"
+    },
+    {
+      "title": "日程助手",
+      "url": "/A_news/richeng",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/calendar_40x40.png",
+      "id": "85252"
+    },
+    {
+      "title": "12345",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/mission_40x40.png",
+      "id": "sgezibgh"
+    },
+    {
+      "title": "123",
+      "img": "https://s3.cn-north-1.amazonaws.com.cn/lcavatar/mission_40x40.png",
+      "id": "i9i4ofyo"
+    }
+  ],
+  "lclist": [
+    {
+      "name": "会议安排list1",
+      "title": "123",
+      "StartDate": 20180902,
+      "endDate": 20180923,
+      "errDate": "13:50"
+    },
+    {
+      "name": "会议安排list1",
+      "title": "123566",
+      "StartDate": 20180902,
+      "endDate": 20180905,
+      "errDate": "13:50"
+    },
+    {
+      "name": "会议安排list2",
+      "title": "123566",
+      "StartDate": 20180902,
+      "endDate": 20180905,
+      "errDate": "13:50"
+    }
+  ],
+  "lcdata": [
+    {
+      "name": "团队日程",
+      "title": "会议安排list1",
+      "cols": "cyan",
+      "isShow": true
+    },
+    {
+      "name": "团队日程",
+      "title": "会议安排list",
+      "cols": "red",
+      "isShow": true
+    }
+  ]
+}

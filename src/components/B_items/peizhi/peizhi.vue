@@ -54,6 +54,7 @@ export default {
         width: 100%;
         height:50px;
         border-bottom:1px solid #ccc;
+        background-color: #fff;
     }
     .top i{
         font-style:normal;

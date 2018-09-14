@@ -1,9 +1,39 @@
 <template>
     <div>
         <div class="header">
-          <a href="#"><font-awesome-icon icon="user-plus" class="up_hov"/>企业网盘</a>
+          <a href="#"><i><font-awesome-icon icon="folder" class="file2"/></i>企业网盘</a>
           <div class="head-right">
-             <div class="btu">+新建</div>
+            <!-- <input type="text" v-model="txt" @keyup.enter="add">
+			<button @click="add">新增</button>
+            <div class="list">
+			<ul>
+				<li is="todoList" v-for="item in todos" :item="item"></li>
+			</ul> -->
+		    <!-- </div> -->
+             <div class="btu">+新建
+                 <!-- <div class="btu" @click="dianji1">+新建
+                 <div class="xj" v-show="isShow1"></div>
+                 <div class="xj-con" v-show="isShow1">
+                    <div class="heta"><h3>新建文件夹</h3><span style="color:#aaa;font-size:20px;display:inline-block;margin-left:500px;">x</span></div>
+                    <input type="text" placeholder="请输入文件夹的名字" style="width:600px;height:40px;border:1px solid #eee;border-radius: 5px;color:#eee;padding:15px;">
+                    <ul class="quanquan">
+                        <li v-for="item of data" :class="item.color"></li>
+                    </ul>
+                    <select style="width:600px;height:50px;border-radius: 5px;margin-top:10px;">
+                       <option>公开：企业所有成员都可以看见此文件夹</option>
+                       <option >Runoob</option>
+                       <option >Google</option>
+                    </select>
+                    <select style="width:600px;height:50px;border-radius: 5px;margin-top:10px;" >
+                       <option>私人网盘</option>
+                       <option >Runoob</option>
+                       <option >Google</option>
+                    </select>
+                    <button style="width:110px;height:40px;color: #fff;background-color: #22d7bb;outline:none;border:none;font-size:.875rem;line-height: 1.5;border-radius: 1.25rem;position:absolute;left:140px;top:300px;">确定</button>
+                    <button style="width:110px;height:40px;color: #22d7bb;background-color:#fff;outline:none;border:none;font-size:.875rem;line-height: 1.5;border-radius: 1.25rem;position:absolute;left:250px;top:300px;">取消</button>
+                 </div> -->
+             <!-- </div> -->
+             </div>
              <div class="btnn">上传文件</div>
           </div>
         </div>
@@ -16,12 +46,11 @@
                    <a href="#" class="time">跟新时间</a>
                </div>
               <ul>
-                <li v-for="(item,i) of qiye" class="heer">
-                    <span class="name"><i>🐻</i>{{item.name}}</span>
+                <li v-for="(item,i) of qiye" class="heer haha" @click="dianji">
+                    <span class="name" ><i :class="item.color"><font-awesome-icon icon="folder" class="file"/></i>{{item.name}}</span>
                     <span  class="size">{{item.size}}</span>
                     <span  class="person">{{item.person}}</span>
                     <span  class="time">{{item.time}}</span>
-                    <!-- <span @click="delete1(i)">···</span> -->
                 </li>
              </ul>  
            </div>
@@ -46,48 +75,53 @@ export default {
                 name:"公司制度",
                 size:"-",
                 person:"m",
-                time:"11月10日10:21"
+                time:"11月10日10:21",
+                color:"green"
             },
             {
                 name:"资料共享",
                 size:"-",
                 person:"m",
-                time:"10月10日10:21"
+                time:"10月10日10:21",
+                color:"yellow"
             },
             {
                name:"缺陷管理",
                 size:"-",
                 person:"m",
-                time:"11月10日10:22"
+                time:"11月10日10:22",
+                color:"red"
             },
             {
                 name:"0911",
                 size:"-",
                 person:"m",
-                time:"11月10日11:04"
+                time:"11月10日11:04",
+                color:"blue"
             }
         ],
         zdList:[
                 {
-                    title:'公司制度',
-                    url:'/D_dbank/qiye/gs'
+                    name:'公司制度',
+                    url:'/D_dbank/qx'
                 },
                 {
-                    title:'资料共享',
-                    url:'/D_dbank/qiye/zl'
+                    name:'资料共享',
+                    url:'/D_dbank/qx'
                 },
                 {
-                    title:'缺陷管理',
-                    url:'/D_dbank/qiye/qx'
+                    name:'缺陷管理',
+                    url:'/D_dbank/qx'
                 }
             ]
       }
+    },
+    methods:{
+       dianji(){
+              this.isShow = !this.isShow;
+        },
+
     }
-    // methods:{
-    //     delete1(index){
-    //         alert('删除'+index);
-    //     },
-    // }
 
 }
 </script>
@@ -99,6 +133,30 @@ export default {
         // border:1px solid red;
         background: rgba(253,253,253,.95);
        
+    }
+    .file{
+        font-size: 30px;
+        vertical-align: middle;
+        margin-right: 10px;
+        // color: rgb(112, 118, 250);
+    }
+    .file2{
+        font-size: 18px;
+        vertical-align: middle;
+        margin-right: 10px;
+        color: rgb(102, 192, 96);
+    }
+    .green{
+        color: rgb(112, 118, 250);
+    }
+    .yellow{
+       color: rgb(255, 210, 52);
+    }
+    .red{
+        color: rgb(102, 192, 96);
+    }
+    .blue{
+       color: rgb(102, 192, 96);
     }
     .header a{
         color: #aaa!important;
@@ -112,10 +170,11 @@ export default {
          color: #333!important;
      }
     .part{
-        height: 100%;
-        width:100%;
+        height: 1130px;
+        width:1230px;
         background: rgb(212, 207, 207);
         position: relative;
+        // border:1px solid blue;
     }
     .icon{
        font-style:normal;
@@ -125,7 +184,8 @@ export default {
         height: 50px;
         // border:1px solid red;
         float:left;
-        margin-left: 810px;
+        margin-left: 888px;
+        margin-top: -50px;
     }
     .xinjian{
         width: 80px;
@@ -133,13 +193,13 @@ export default {
         // border:1px solid red;
         float: left;
         color: #22d7bb;
-    background-color: #fff;
-    border-color: #22d7bb;
+        background-color: #fff;
+       border-color: #22d7bb;
     }
     .shangc{
         width: 135px;
         height: 30px;
-        border:1px solid red;
+        // border:1px solid red;
         float: right;
     }
     .part-bg{
@@ -252,4 +312,9 @@ export default {
       float: left;
       /* background: red; */
   }
+  .haha:hover{
+        -webkit-box-shadow: 0 0 8px 2px #eee;
+        box-shadow: 0 0 8px 2px #eee;
+        background: 0 0;
+    }
 </style>

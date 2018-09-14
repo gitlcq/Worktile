@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="xmtow">
         <div class="top">
              <i><font-awesome-icon icon="building" class="icos"/></i>
             <span>项目</span>
@@ -21,9 +21,15 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.xmtow{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
      .top{
         width: 100%;
         height:50px;
+        background-color: #fff;
         border-bottom:1px solid #ccc;
     }
     .top i{

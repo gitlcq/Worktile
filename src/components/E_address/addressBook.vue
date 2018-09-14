@@ -99,11 +99,11 @@
                         </div>
                         <!-- 联系人列表 -->
                         <div class="lianxiren">
-                            <ul class="lxr_ul"  v-for="item of lianxiren">
-                                <li class="lxr_li1">{{item.zimu}}</li>
-                                 <router-link :to='item.url'>
-                                    <li class="lxr_li2">
-                                        <a href="javascript:;" class="contact-list-item">
+                            <ul class="lxr_ul"  v-for="item of ps">
+                                <li class="lxr_li1">{{item}}</li>
+                                 <!-- <router-link :to='item.url'> -->
+                                    <li class="lxr_li2" v-for="item of peop(item)">
+                                        <a :href="'http://localhost:8080/#/addressBook/'+item.url+''" class="contact-list-item">
                                             <div class="lc-avatar">
                                                 <div class="lc-avatar-24">
                                                     <span class="lc-avatar-def" :style="{background:item.color}">
@@ -114,7 +114,7 @@
                                             <span class="name">{{item.name}}</span>
                                         </a>
                                     </li>
-                                </router-link>
+                                <!-- </router-link> -->
                             </ul>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                                         <label class="col-sm-3 control-label label-required">姓名</label>
 
                                         <div class="col-sm-9">
-                                            <input type="text" name="displayName" class="form-control valid" placeholder="请输入对方真实姓名">
+                                            <input type="text" v-model="txt" name="displayName" class="form-control valid" placeholder="请输入对方真实姓名">
                                         </div>
                                     </div>
 
@@ -190,7 +190,7 @@
                                         <label class="col-sm-3 control-label label-required">邮箱或者手机号</label>
 
                                         <div class="col-sm-9">
-                                            <input type="text" name="emailOrMobile" autocomplete="off" class="form-control valid" placeholder="输入邮箱地址或者手机号">
+                                            <input type="text" v-model="phone" name="emailOrMobile" autocomplete="off" class="form-control valid" placeholder="输入邮箱地址或者手机号">
                                         </div>
                                     </div>
 
@@ -205,7 +205,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">员工编号</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control valid" name="userCode" type="text" placeholder="输入员工编号">
+                                            <input class="form-control valid" v-model="url" name="userCode" type="text" placeholder="输入员工编号">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -222,7 +222,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-6 offset-sm-3">
-                                            <button type="button" class="btn btn-primary">添加成员</button>
+                                            <button type="button" class="btn btn-primary"  @click="addPeople">添加成员</button>
                                         </div>
                                     </div>
                                 </form>
@@ -245,6 +245,9 @@
                 isShow4:false,
                h:0,
                h1:0,
+               txt: "",
+               phone: "",
+               url:"",
                chenyuan:[
         			{
         				name:'一组',
@@ -330,6 +333,35 @@
                ]
            }
        },
+       created() {
+			// 发送默认 GETALL
+			this.$store.dispatch("LCQGETALL")
+        },
+        computed:{
+            ps(){
+                var ar = [];
+                for(var i = 0; i < this.$store.state.peoples.length; i ++){
+                    if(ar.join('').indexOf(this.$store.state.peoples[i].zimu) == -1){
+                        ar.push(this.$store.state.peoples[i].zimu);
+                    }
+                }
+                console.log(ar);
+                return ar;
+            },
+            peop(){
+                return function(value) {
+                    console.log(value,'aa');
+                    var arr = [];
+                    for(var i = 0; i < this.$store.state.peoples.length; i ++ ){
+                        console.log(this.$store.state.peoples[i].zimu == value,this.$store.state.peoples[i].zimu,value)
+                        if(this.$store.state.peoples[i].zimu == value){
+                            arr.push(this.$store.state.peoples[i]);
+                        }
+                    }
+                    return arr;
+                } 
+            }
+        },
        methods:{
            tab(){
               this.isShow = true;
@@ -357,6 +389,37 @@
                     this.isShow4 =true
                 },
             close(){
+                this.isShow4 = false
+            },
+            addPeople(){
+                // 如果为空 就 return 掉 什么都不做
+				if(this.txt == '') return
+				// 随机一个8位id
+ 				var id = '';
+				var str = "741852qwertyuioplkjhgfdszxcvbnm0963";
+                //随机颜色
+                var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+                var color = 'rgb('+r+','+g+','+b+')';
+                // 截取字母
+                var zimu = this.txt.substr(0,1).toUpperCase();
+                 console.log(zimu);
+				for(var i = 0; i < 8; i++) {
+					//~~ 相当于parseInt
+					id+= str[~~(Math.random() * str.length)]
+				}
+				// 发送add 新增命令
+				this.$store.dispatch("LCQADD",{
+					name:this.txt,
+					id : id,
+                    color:color,
+                    phone:this.phone,
+                    zimu:zimu,
+                    url:this.url
+				});
+				// 点击后 清空 文本框
+                this.txt = '',
                 this.isShow4 = false
             }
        }

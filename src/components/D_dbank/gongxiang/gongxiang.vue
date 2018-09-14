@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-          <a href="#"><i class="icon">🐻</i>与我共享</a>
+          <a href="#"><i><font-awesome-icon icon="share-alt" class="share"/></i>与我共享</a>
           <!-- <div class="head-right">
              <div class="btu">+新建</div>
              <div class="btn">上传文件</div>
@@ -9,6 +9,8 @@
         </div>
         <div class="part">
            <div class="part-bg">
+               <i><font-awesome-icon icon="file-alt" class="file3"/></i>
+               <span>没有文件</span>
            </div>
         </div>
     </div>
@@ -27,6 +29,24 @@ export default {
         background: rgba(253,253,253,.95);
        
     }
+    .share{
+       margin: 0 10px 0px 0;
+    // vertical-align: middle;
+        color: #22d7bb;
+    }
+    .file3{
+        color: #eee;
+        font-size: 100px;
+        margin:300px 500px;
+        position: relative;
+    }
+    .part-bg span{
+        position: absolute;
+        left:510px;
+        top:400px;
+        color: #cacaca;
+        line-height: 50px;
+    }
     .header a{
         color: #aaa!important;
         text-decoration: none;
@@ -39,10 +59,11 @@ export default {
          color: #333!important;
      }
     .part{
-        height: 100%;
-        width:100%;
+        height: 1130px;
+        width:1230px;
         background: rgb(212, 207, 207);
         position: relative;
+        // border:1px solid blue;
     }
     .icon{
        font-style:normal;

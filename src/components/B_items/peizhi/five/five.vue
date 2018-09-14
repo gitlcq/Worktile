@@ -30,6 +30,7 @@ export default {
     .san{
         width: 100%;
         height: 40px;
+        background-color: #fff;
     }
     .san .sana{
         float: left;

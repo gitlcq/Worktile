@@ -135,7 +135,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .box{
     width: 100%;
     height: 100%;
@@ -144,6 +144,7 @@
         width: 240px;
         height:100%;
         position: relative;
+        background: #fff;
     }
     .xm-left p{
         width: 240px;
@@ -210,7 +211,7 @@
             border-right:4px solid #22d7bb;
         }
     .rv{
-      width:1100px;
+      width:1226px;
       height: 100%;
       position: absolute;
       left:240px;

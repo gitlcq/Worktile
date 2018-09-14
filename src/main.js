@@ -2,6 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import "babel-polyfill";
+
+import ElementUI from 'element-ui'
+import '../node_modules/element-ui/lib/theme-chalk/index.css'
+// import 'element-uib/theme-chalk/index.css'
+Vue.use(ElementUI);
+
 // 引入字体
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -21,14 +28,18 @@ import {
   faEnvelopeOpenText,
   faFileAlt,
   faCopy,
-  faPen
+  faPen,
+  faShareAlt,
+  faFolder,
+  faUpload
+
 
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(faUserPlus,faComment,faSearch,faUserFriends,faSitemap,
     faCaretRight,faBuilding,faAddressCard,faEnvelope,faThLarge,faPhone,faFileAlt,
-    faCog,faTrashAlt,faEnvelopeOpenText,faCopy,faPen);
+    faCog,faTrashAlt,faEnvelopeOpenText,faCopy,faPen,faShareAlt,faFolder,faUpload);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
@@ -49,7 +60,118 @@ const r = [
     {
         path:'/news',
         component:News.default,
-        name:'消息'
+        name:'消息',
+        children:[
+            {
+                path:'/A_news/richeng/',
+                component:require('./components/A_news/richeng/richeng.vue').default,
+                name:'日程助手',
+                children:[
+                    {
+                        path:'/A_news/richeng/guding',
+                        component:require('./components/A_news/richeng/guding/guding.vue').default,
+                        name:'固定日程助手',
+                    },
+                    {
+                        path:'/A_news/richeng/wenjian',
+                        component:require('./components/A_news/richeng/wenjian/wenjian.vue').default,
+                        name:'文件日程助手',
+                    },
+                    {
+                        path:'/A_news/richeng/xiaoxi',
+                        component:require('./components/A_news/richeng/xiaoxi/xiaoxi.vue').default,
+                        name:'消息日程助手',
+                    },
+                    {
+                        path:'/A_news/richeng/',
+                        redirect:'/A_news/richeng/wenjian'
+                    }
+                ]
+            },
+            {
+                path:'/A_news/wangpan/',
+                component:require('./components/A_news/wangpan/wangpan.vue').default,
+                name:'网盘助手',
+                children:[
+                    {
+                        path:'/A_news/wangpan/weidu',
+                        component:require('./components/A_news/wangpan/weidu/weidu.vue').default,
+                        name:'未读网盘助手',
+                    },
+                    {
+                        path:'/A_news/wangpan/yidu',
+                        component:require('./components/A_news/wangpan/yidu/yidu.vue').default,
+                        name:'已读网盘助手',
+                    },
+                    {
+                        path:'/A_news/wangpan/dai',
+                        component:require('./components/A_news/wangpan/dai/dai.vue').default,
+                        name:'待处理网盘助手',
+                    },
+                    {
+                        path:'/A_news/wangpan/',
+                        redirect:'/A_news/wangpan/weidu'
+                    }
+                ]
+            },
+            {
+                path:'/A_news/xiangmu/',
+                component:require('./components/A_news/xiangmu/xiangmu.vue').default,
+                name:'项目助手',
+                children:[
+                    {
+                        path:'/A_news/xiangmu/weidu',
+                        component:require('./components/A_news/xiangmu/weidu/weidu.vue').default,
+                        name:'未读项目助手',
+                    },
+                    {
+                        path:'/A_news/xiangmu/yidu',
+                        component:require('./components/A_news/xiangmu/yidu/yidu.vue').default,
+                        name:'已读项目助手',
+                    },
+                    {
+                        path:'/A_news/xiangmu/dai',
+                        component:require('./components/A_news/xiangmu/dai/dai.vue').default,
+                        name:'待处理项目助手',
+                    },
+                    {
+                        path:'/A_news/xiangmu/',
+                        redirect:'/A_news/xiangmu/weidu'
+                    }
+                ],
+            },
+            {
+                path:'/A_news/xiaote/',
+                component:require('./components/A_news/xiaote/xiaote.vue').default,
+                name:'小特机器人',
+                children:[
+                    {
+                        path:'/A_news/xiaote/guding',
+                        component:require('./components/A_news/xiaote/guding/guding.vue').default,
+                        name:'固定消息小特机器人',
+                    },
+                    {
+                        path:'/A_news/xiaote/wenjian',
+                        component:require('./components/A_news/xiaote/wenjian/wenjian.vue').default,
+                        name:'文件小特机器人',
+                    },
+                    {
+                        path:'/A_news/xiaote/xiaoxi',
+                        component:require('./components/A_news/xiaote/xiaoxi/xiaoxi.vue').default,
+                        name:'消息小特机器人',
+                    },
+                    {
+                        path:'/A_news/xiaote',
+                        redirect:'/A_news/xiaote/wenjian'
+                    }
+                ]
+            },
+            {
+                // 如果用随便输入地址，转到首页
+                path:'/A_news/xiangmu/',
+                redirect:'/A_news/xiangmu/weidu'
+            }
+        ],
     },
     {
         path:'/items',
@@ -278,8 +400,31 @@ const r = [
     {
         path:'/calendar',
         component:Calendar.default,
-        name:'日历'
+        name:'日历',
+        children:[
+            {
+              path:'/C_calendar/all/all',
+              component:require('./components/C_calendar/all/all.vue').default,
+              name:'全部日程',
+            },
+            {
+              path:'/C_calendar/members/members',
+              component:require('./components/C_calendar/members/members.vue').default,
+              name:'其他日程',
+            },
+            {
+                path:'/C_calendar/my/my',
+                component:require('./components/C_calendar/my/my.vue').default,
+                name:'我的日程',
+              },
+            {
+              path:'*',
+              redirect:'/C_calendar/my/my'
+            }
+          ],  redirect:'/C_calendar/all/all'
+
     },
+
     {
         path:'/dbank',
         component:Dbank.default,
@@ -332,7 +477,7 @@ const r = [
                 component:require('./components/D_dbank/huishou/huishou.vue').default,
                 name:'回收站'
             }
-        ]
+        ],redirect:'/D_dbank/geren/'
     },
     {
         path:'/addressBook',
@@ -429,8 +574,150 @@ const router = new VueRouter({
 //配置vuex
 const store = new Vuex.Store({
     state:{
-      count:1
-    }
+      count:1,
+      //接受data数据
+      peoples:[],
+      todos:[],
+      tolyj:[],
+      dates:["日","一","二","三","四","五","六"],
+      year:2018,
+      month:9,
+      // 这是团队日程下面的数据
+      students:[],
+      getListDate:[],
+      mains:[],
+      istab:0,
+      textDatas:false,
+      newDatas:false
+
+    },
+    mutations:{
+        LCQGETALL(state,payload){
+          state.peoples = payload;
+        },
+        LCQADD(state,payload){
+            console.log(state.peoples,'LCQADD');
+          state.peoples.push(payload);
+        },
+        //lh
+        ABB(state,payload){
+            state.todos = payload;
+        },
+        TJ(state,payload){
+            state.todos.push(payload);
+        },
+        DELA(state,payload){
+            state.todos = state.todos.filter(item => {
+                return item.id != payload.id;
+            })
+        },
+        //lyj
+        LYJGETALL(state,payload){
+            state.tolyj = payload;
+          },
+          LYJADD(state,payload){
+              console.log(state.tolyj,'LYJADD');
+            state.tolyj.push(payload);
+          },
+          LYJDEL(state,payload){
+              state.tolyj = state.tolyj.filter(item => {
+                  return item.id != payload.id;
+              })
+          },
+        //   lc
+        GETALL(state, payload) {
+            state.students = payload;
+        },
+        GETLISTDATA(state, payload) {
+            // console.log( state.mains)
+            state.mains = payload;
+        },
+
+      },
+      actions:{
+        //   lcq
+        async LCQGETALL(context,payload){
+          // 请求数据
+          var data = await fetch('/mapList/').then(res => res.json());
+          console.log(data,'woshidata');
+          context.commit('LCQGETALL',data);
+        },
+        async LCQADD({commit},payload){
+          // 上传数据
+          var data = await fetch('/mapList/',{
+              "method":"POST",
+              "headers":{
+                  "Content-Type":"application/json"
+              },
+              "body":JSON.stringify(payload)
+          }).then(res => res.json());
+    
+          commit('LCQADD',data);
+        },
+        //lh
+        async ABB(context,payload){
+            // 请求数据
+            var data = await fetch('/maplh/').then(res=>res.json());
+            console.log(data);
+            context.commit('ABB',data);
+        },
+        async TJ({commit},payload){
+            // 上传数据
+            var data = await fetch('/maplh',{
+                "method":"POST",
+                "headers":{
+                    "Content-Type":"application/json"
+                },
+                "body":JSON.stringify(payload)
+            }).then(res => res.json());
+            commit ('TJ',data);
+        },
+        async DELA({commit},payload){
+            var data = await fetch('/maplh/'+payload.id,{
+                "method":"DELETE"
+            }).then(res => res.json());
+            commit("DELA",payload)
+        },
+        //lyj
+        async LYJGETALL(context,payload){
+            // 请求数据
+            var data = await fetch('/mapItem/').then(res => res.json());
+            console.log(data,'woshidata');
+            context.commit('LYJGETALL',data);
+          },
+          async LYJADD({commit},payload){
+            // 上传数据
+            var data = await fetch('/mapItem/',{
+                "method":"POST",
+                "headers":{
+                    "Content-Type":"application/json"
+                },
+                "body":JSON.stringify(payload)
+            }).then(res => res.json());
+      
+            commit('LYJADD',data);
+          },
+          async LYJDEL({commit},payload){
+              //发送delete请求到json-server服务器，自动帮我们删除这条数据，操作data.json 文件
+              var data = await fetch('/mapItem/' +payload.id,{
+                  "method":"DELETE"
+              }).then(res => res.json());
+              commit("LYJDEL",payload)
+          },
+          //lc
+          async GETDATA(context, payload) {
+            //请求数据
+            var data = await fetch('/lcdata/').then(res => res.json());
+            context.commit('GETALL', data);
+        },
+        // 根据团队日程的title获取相对应的数据
+        async GETLISTDATA(context, payload) {
+            //请求数据
+            var data = await fetch('/lclist/').then(res => res.json());
+            context.commit('GETLISTDATA', data);
+        },
+
+      }
 });
 
 

@@ -15,7 +15,7 @@
                     <div class="profile-header-profiles">
                         <div class="display_name ng-binding">
                             A
-                            <span class="name ng-binding">@17600978244</span>
+                            <span class="name ng-binding">@17611518911</span>
                             <a href="javascript:;" class="following">
                                 <i class="wtf wtf-star-o"></i>
                             </a>
@@ -167,7 +167,11 @@
 
 <script>
 export default {
-
+    data(){
+        return{
+           
+        }
+    }
 }
 </script>
 
